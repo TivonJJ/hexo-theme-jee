@@ -1,0 +1,129 @@
+footer
+  margin-top 1em
+  padding 10px 0
+  border-top solid 1px #cccccc
+#page-footer
+  position absolute
+  left 0
+  bottom 0
+  width 100%
+  height footer-height
+  background color-footer
+  padding 0
+#footer
+  width 95%
+  margin 0 auto
+  overflow hidden
+  position relative
+  padding 0
+  color #dddddd
+  height footer-height
+  #footer-link,#friend_link
+    font-size 12px
+    width 13em
+    margin 0 auto
+    @media tablet
+      width 18em
+    &:after
+      display block
+      content " "
+      clear both
+    li
+      float left
+      margin 5px 10px
+      a
+        color color-white
+        &:hover
+          color color-blue
+          text-decoration underline
+  #friend_link
+    width 80%
+    min-height 5px
+    @media tablet
+      min-height 18px
+    li
+      margin 5px
+  .intro
+    position absolute
+    left 35%
+    bottom 21px
+    font-size 17px
+    font-family font-custom-family
+    cursor default
+    transition .5s
+    &:hover
+      transform rotate(-10deg) scale(1.2,1.2)
+    @media tablet
+      left 21px
+      bottom 30px
+
+.social-font
+  width 100%
+  margin 0 auto
+  display none
+  @media mini
+    width 18em
+  @media tablet
+    display block
+  a
+    float left
+    display block
+    width 14%
+    color color-white
+    font-size font-size+80
+    padding 0.5em
+    font-family font-icon-family
+    font-smoothing()
+    &:before
+      transition .6s ease-out
+      font-family font-icon-family
+      font-smoothing()
+    @media tablet
+      padding 0.2em
+    &:hover:before
+      color color-blue
+      transform rotate(360deg)
+    &[title="weibo"]::before
+      content "\f18a"
+    &[title="twitter"]::before
+      content "\f099"
+    &[title="github"]::before
+      content "\f09b"
+    &[title="facebook"]::before
+      content "\f09a"
+    &[title="rss"]::before
+      content "\f09e"
+    &[title="email"]::before
+      content "\f003"
+    &[title="html5"]::before
+      content "\f13b"
+    &[title="css3"]::before
+      content "\f13c"
+
+.copyright
+  position absolute
+  bottom 0
+  if ShowCustomFont
+    font-smoothing()
+    font-family font-custom-family
+  else
+    font-family font-default
+    font-size 0.6em
+  width 100%
+  text-align center
+  @media mini
+    float left
+  a
+    color color-white
+    &:hover
+      color color-blue
+
+.powered
+  font-family font-custom-family
+  margin-left 5px
+
+#cnzz_stat_icon_1254037870
+  display block
+  width 0
+  height 0
+  overflow hidden

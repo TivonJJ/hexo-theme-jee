@@ -1,0 +1,9 @@
+<script src="<%- config.root %>js/jquery-2.1.0.min.js"></script>
+<footer class="article-footer clearfix">
+<%- partial('catetags') %>
+<% if(is_post() && theme.baidushare.enable){ %>
+  <div class="article-share" id="share" data-text="<%=page.title%> 来自:<%=config.url%>">
+    <%- partial('baidushare') %>
+  </div>
+<% } %>
+</footer>

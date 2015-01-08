@@ -1,0 +1,36 @@
+<% if (theme.changyan && theme.changyan.enable && page.comments){ %>
+<section class="comment" id="changyan_comments" appid="<%=theme.changyan.appid%>">
+	<div id="SOHUCS" sid="<%=page._id%>"></div>
+</section>
+<script type="text/javascript">
+	(function(){
+		var appid = $("#changyan_comments").attr("appid"),
+				conf = 'prod_9ed8bb3057bfa09d6f9478e1ff3093a3';
+		var doc = document,
+				s = doc.createElement('script'),
+				h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+		s.type = 'text/javascript';
+		s.charset = 'utf-8';
+		s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+		h.insertBefore(s,h.firstChild);
+		window.SCS_NO_IFRAME = true;
+	})()
+</script>
+<% } %>
+
+<% if (theme.duoshuo && theme.duoshuo.enable && page.comments){ %>
+<section class="comment" id="duoshuo_comments" shortName="<%=theme.duoshuo.short_name%>">
+	<div class="ds-thread" data-thread-key="<%=page._id%>" data-title="<%=page.title%>" data-url="<%- config.root %><%- item.path %>"></div>
+</section>
+<script type="text/javascript">
+	var duoshuoQuery = {short_name:$("#duoshuo_comments").attr("shortName")};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+<% } %>

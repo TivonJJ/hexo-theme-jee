@@ -1,0 +1,8 @@
+<% if (site.tags.length){ %>
+  <div class="tagcloudlist">
+    <a href="<%=config.root%>tags" title="查看所有标签"><p class="asidetitle"><%= __('tagcloud') %></p></a>
+    <div class="tagcloudlist clearfix">
+       <%- tagcloud() %>
+    </div>
+  </div>
+<% } %>

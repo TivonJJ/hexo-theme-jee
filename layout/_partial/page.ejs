@@ -1,0 +1,8 @@
+<div id="main" class="page" <%if(item.bgColor){%> style="background-color:<%=item.bgColor%>" <%}%>>
+  <article itemprop="articleBody">
+    <div class="article-content">
+      <%- partial('gallery') %>
+      <%- item.content %>
+    </div>
+  </article>
+</div>

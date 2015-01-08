@@ -1,0 +1,68 @@
+<script src="<%- config.root %>js/jquery-2.1.0.min.js"></script>
+<div id="footer" >
+	<div class="tongji">
+		<%if(config.statistics.baidu){%><script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?2346db6645a993ff0ee90d729222b5c2";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script><%}%>
+		<%if(config.statistics.cnzz){%>
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254037870'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1254037870' type='text/javascript'%3E%3C/script%3E"));</script>
+		<%}%>
+	</div>
+	<ul id="friend_link">
+		<%if(theme.footerFriendLinkEnable){%>
+		<li style="margin: 5px 0"><%= __('links') %>:</li>
+			<% for (var i in theme.friendLink){ %>
+				<li><a href="<%- theme.friendLink[i] %>" target="_blank"><%= i %></a></li>
+			<% } %>
+		<%}%>
+	</ul>
+	<ul id="footer-link">
+		<% for (var i in theme.footerLink){ %>
+		<li><a href="<%- theme.footerLink[i] %>"><%= __(i) %></a></li>
+		<% } %>
+	</ul>
+	<div class="intro">
+		<%if(theme.author.intro_line1){%><p><%=theme.author.intro_line1%></p><%}%>
+		<%if(theme.author.intro_line2){%><p><%=theme.author.intro_line2%></p><%}%>
+	</div>
+	<div class="social-font clearfix">
+		<% if(theme.author.weibo){ %>
+		<a href="http://weibo.com/<%= theme.author.weibo %>" target="_blank" title="weibo"></a>
+		<% } %>
+		<% if(theme.author.twitter){ %>
+		<a href="https://twitter.com/<%=theme.author.twitter %>" target="_blank" title="twitter"></a>
+		<% } %>
+		<% if(theme.author.github){ %>
+		<a href="https://github.com/<%=theme.author.github %>" target="_blank" title="github"></a>
+		<% } %>
+		<% if(theme.author.facebook){ %>
+		<a href="https://www.facebook.com/<%=theme.author.facebook %>" target="_blank" title="facebook"></a>
+		<% } %>
+		<% if(theme.author.rss){ %>
+        <a href="<%=theme.author.rss %>" target="_blank" title="rss"></a>
+        <% } %>
+		<% if(theme.author.email){ %>
+		<a href="mailto:<%=theme.author.email %>" target="_blank" title="email"></a>
+		<% } %>
+		<% if(theme.author.html5){ %>
+		<a href="<%=theme.author.html5 %>" target="_blank" title="html5"></a>
+		<% } %>
+		<% if(theme.author.css3){ %>
+		<a href="<%=theme.author.css3 %>" target="_blank" title="css3"></a>
+		<% } %>
+	</div>
+	<p class="copyright">
+		Copyright © 2015 <% if (config.author) { %>
+		<a href="<%= config.url %>" target="_blank" title="<%= config.author %>"><%= config.author %></a>
+		<% } else {%>
+		<a href="<%= config.url %>" title="<%= config.title %>"><%= config.title %></a>
+		<% } %> , All Rights Reserved
+		<span class="powered">Powered by hexo</span>
+	</p>
+</div>
