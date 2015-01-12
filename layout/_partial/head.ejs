@@ -51,7 +51,14 @@
     <link rel="apple-touch-icon" href="<%- config.root %><%- theme.apple_icon %>">
     <link rel="apple-touch-icon-precomposed" href="<%- config.root %><%- theme.apple_icon %>">
     <% } %>
+    <script type="text/javascript" src="<%=config.root%>js/require.js"></script>
     <script type="text/javascript">
+      require.config({
+        baseUrl:"<%=config.root%>js",
+        paths:{
+          jquery:"jquery-1.11.2.min"
+        }
+      });
       var isIE = /msie/i.test(navigator.userAgent);
       if(isIE){
         var browser = navigator.userAgent.match(/msie [\d.]+;/gi) ;

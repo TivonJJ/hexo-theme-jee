@@ -1,18 +1,61 @@
 <%-css("css/pages/message")%>
 <div id="main" class="page message_page">
-    <form name="message_form" action="#" onsubmit="return false;">
-        <div><label><span>*</span>类型：</label><select>
+    <form name="message_form" id="mform" action="#" onsubmit="submitMsg();return false;">
+        <div><label><span>*</span>类型：</label><select name="type">
                 <option>意见和建议</option>
                 <option>bug提交</option>
                 <option>版权申诉</option>
                 <option>友链交换</option>
                 <option>其他</option>
             </select></div>
-        <div><label><span>*</span>留言内容：</label><textarea placeholder="200字以内留言内容" maxlength="200"></textarea></div>
-        <div><label><span>*</span>姓名：</label><input type="text" placeholder="你的名字或昵称"/></div>
-        <div><label>相关链接：</label><input type="links" placeholder="选填、相关链接地址，多个可以使用逗号隔开"/></div>
-        <div><label><span>*</span>邮箱：</label><input type="email" placeholder="你的联系邮箱"/></div>
-        <div><label>电话：</label><input type="tel" placeholder="选填，你的联系电话"/></div>
+        <div><label><span>*</span>留言内容：</label><textarea placeholder="200字以内留言内容" name="content" maxlength="200"></textarea></div>
+        <div><label><span>*</span>姓名：</label><input type="text" name="name" maxlength="12" placeholder="你的名字或昵称"/></div>
+        <div><label>相关链接：</label><input type="links" name="links" maxlength="300" placeholder="选填、相关链接地址，多个可以使用逗号隔开"/></div>
+        <div><label><span>*</span>邮箱：</label><input type="email" name="email" maxlength="25" placeholder="你的联系邮箱"/></div>
+        <div><label>电话：</label><input type="tel" name="phone" maxlength="11" placeholder="选填，你的联系电话"/></div>
+        <div><label>验证码：</label><input type="text" class="verify_code" name="verifyCode" maxlength="6"/><img class="verify_img" alt="点击刷新验证码" title="点击刷新"/></div>
+        <div id="error_msg"></div>
         <input type="submit" class="submit" value="提交"/>
     </form>
 </div>
+<script type="text/javascript">
+    function submitMsg(){
+        var form = $("#mform");
+        var param = {};
+        $.each(form.serializeArray(),function(i,item){
+            param[item.name] = item.value;
+        });
+        var v = validate(param);
+        if(v!==true){
+            $("#error_msg").html(v);
+            return;
+        }
+        $.ajax({
+            url:"<%=config.api%>message",
+            data:param,
+            timeout:30000,
+            dataType:"json",
+            success:function(){
+                alert("您的信息已经成功提交!");
+            },
+            error:function(res){
+                alert("信息提交失败："+res.message);
+            }
+        });
+    }
+    function validate(form){
+        if(!form.type)return "请选择留言类型";
+        if(!form.content)return "请填写留言内容";
+        if(form.content.length<10) return "留言不得少于10个字";
+        if(form.content.length>200)return "留言不得大于200个字";
+        if(!form.name)return "请填写你的名字或昵称以方便与你联系";
+        if(!form.email || !(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(form.email)))return "请正确填写邮箱地址";
+        if(!form.verifyCode)return "请填写验证码信息";
+        return true;
+    }
+    require(["jquery"],function(){
+        $("#mform").bind("keyup",function(){
+            $("#error_msg").html("");
+        })
+    })
+</script>

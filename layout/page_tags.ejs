@@ -10,35 +10,30 @@ page.tag = '云标签';
 <style type="text/css">.tag_list_page .tag-list li {transform:scale(1,1);-ms-transform:scale(1,1)}</style>
 <![endif]-->
 <script type="text/javascript">
-    (function(){
-        var getRandomColor = function(){
-            return  '#' +
-                    (function(color){
-                        return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])
-                        && (color.length == 6) ?  color : arguments.callee(color);
-                    })('');
-        }
-        if(!isIE || ieVersion>=9){
-            document.addEventListener("DOMContentLoaded",function(){
+    require(["jquery"],function(){
+        if(!isIE || ieVersion>9){
+            $(document).ready(function(){
                 renderColor();
                 $(".tag-list li").bind("click",function(evt){
                     var href = $(this).find("a").attr("href");
                     if(evt.target == this)location.href = href;
                 })
-            })
+            });
+        }else{
+            $(".tag-list li").each(function(i,item){
+                $(item).css({"background-color":getRandomColor()}).addClass("rendered");
+            });
         }
-        function renderColor(){
-            $.each($(".tag-list li"),function(i,item){
-                var li = $(item).css({"background-color":getRandomColor()});
-                if(isIE && ieVersion==9){
-                    li.addClass("rendered");
-                }
-                else{
-                    setTimeout(function(){
-                        li.addClass("rendered");
-                    },i*120);
-                }
-            })
-        }
-    })();
+    })
+    var getRandomColor = function(){
+        return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
+    }
+    function renderColor(){
+        $(".tag-list li").each(function(i,item){
+            var li = $(item).css({"background-color":getRandomColor()});
+            setTimeout(function(){
+                li.addClass("rendered");
+            },i*120);
+        });
+    }
 </script>
