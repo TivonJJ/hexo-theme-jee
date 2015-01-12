@@ -14,5 +14,6 @@
 		<%- partial('footer') %>   	       
 	</article>
 	<%- partial('pagination') %>
-	<%if(is_post()){%><%- partial('comment') %><%}%>
+	<%if(!page.isReprint){%><div class="ori_statement">此文是本站原创，转载请标注作者和链接出处！</div><%}%>
+	<%if(page.comments){%><%- partial('comment') %><%}%>
 </div>  

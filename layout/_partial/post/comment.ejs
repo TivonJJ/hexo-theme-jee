@@ -1,6 +1,10 @@
+<%
+if(page.date && page.date._i)page.thread = page.date._i;
+else page.thread = encodeURIComponent(page.title);
+%>
 <% if (theme.changyan && theme.changyan.enable && page.comments){ %>
 <section class="comment" id="changyan_comments" appid="<%=theme.changyan.appid%>">
-	<div id="SOHUCS" sid="<%=page._id%>"></div>
+	<div id="SOHUCS" <%if(page.thread){%>sid="<%=page.thread%>"><%}%></div>
 </section>
 <script type="text/javascript">
 	(function(){
@@ -20,7 +24,7 @@
 
 <% if (theme.duoshuo && theme.duoshuo.enable && page.comments){ %>
 <section class="comment" id="duoshuo_comments" shortName="<%=theme.duoshuo.short_name%>">
-	<div class="ds-thread" data-thread-key="<%=page._id%>" data-title="<%=page.title%>" data-url="<%- config.root %><%- item.path %>"></div>
+	<div class="ds-thread" <%if(page.thread){%>data-thread-key="<%=page.thread%>"<%}%> data-title="<%=page.title%>" data-url="<%- config.root %><%- item.path %>"></div>
 </section>
 <script type="text/javascript">
 	var duoshuoQuery = {short_name:$("#duoshuo_comments").attr("shortName")};

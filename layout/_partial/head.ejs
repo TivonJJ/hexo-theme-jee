@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <%
   var title = page.title;
-
   if (is_archive()){
     title = __('archive_a');
 
@@ -14,9 +13,9 @@
       title += ': ' + page.year;
     }
   } else if (is_category()){
-    title = 'Category: ' + page.category;
+    title = __('categories') +":"+ page.category;
   } else if (is_tag()){
-    title = 'Tag: ' + page.tag;
+    title = __('tags') + ":" + page.tag;
   }
   %>
     <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
@@ -52,6 +51,18 @@
     <link rel="apple-touch-icon" href="<%- config.root %><%- theme.apple_icon %>">
     <link rel="apple-touch-icon-precomposed" href="<%- config.root %><%- theme.apple_icon %>">
     <% } %>
+    <script type="text/javascript">
+      var isIE = /msie/i.test(navigator.userAgent);
+      if(isIE){
+        var browser = navigator.userAgent.match(/msie [\d.]+;/gi) ;
+        var version = browser[0].replace(/[^0-9.]/ig,"");
+        window.ieVersion = Number(version)
+      }
+    </script>
     <%- css('css/style') %>
-  <!--[if IE 6]-> <style> <style type="text/css" rel="stylesheet"> body{height: 100%;} </style> <![endif]-->
+  <!--[if lt IE 9]>
+    <%-css("css/lt_ie9")%>
+    <%-js("js/html5_tag")%>
+  <![endif]-->
+  <!--[if IE 6]><style type="text/css" rel="stylesheet"> body{height: 100%;} </style> <![endif]-->
 </head>

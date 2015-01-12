@@ -1,0 +1,18 @@
+<%-css("css/pages/message")%>
+<div id="main" class="page message_page">
+    <form name="message_form" action="#" onsubmit="return false;">
+        <div><label><span>*</span>类型：</label><select>
+                <option>意见和建议</option>
+                <option>bug提交</option>
+                <option>版权申诉</option>
+                <option>友链交换</option>
+                <option>其他</option>
+            </select></div>
+        <div><label><span>*</span>留言内容：</label><textarea placeholder="200字以内留言内容" maxlength="200"></textarea></div>
+        <div><label><span>*</span>姓名：</label><input type="text" placeholder="你的名字或昵称"/></div>
+        <div><label>相关链接：</label><input type="links" placeholder="选填、相关链接地址，多个可以使用逗号隔开"/></div>
+        <div><label><span>*</span>邮箱：</label><input type="email" placeholder="你的联系邮箱"/></div>
+        <div><label>电话：</label><input type="tel" placeholder="选填，你的联系电话"/></div>
+        <input type="submit" class="submit" value="提交"/>
+    </form>
+</div>

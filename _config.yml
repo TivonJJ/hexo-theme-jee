@@ -82,7 +82,7 @@ author:
 ### Links on footer
 footerLink:
   footer_message: /pages/message.html
-  footer_statement: /pages/statement.html
+  footer_statement: /statement/
   footer_about: /about/
 
 ### Friend links

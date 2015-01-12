@@ -1,6 +1,6 @@
 <% if (site.categories.length){ %>
 <div class="categorieslist">
-	<a href="<%=config.root%>categories" title="查看所有分类"><p class="asidetitle"><%= __('categories') %></p></a>
+	<p class="asidetitle"><a href="<%=config.root%>categories" title="查看所有分类"><%= __('categories') %></a></p>
 	<%- list_categories({depth:1,show_count:false}) %>
 </div>
 <% } %>

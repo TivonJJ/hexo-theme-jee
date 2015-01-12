@@ -1,0 +1,61 @@
+@import 'nib'
+@import '../_base/variable'
+
+.category_list_page
+  .category-list
+    padding 10px 20px
+    a:hover
+      color color-red
+    .category-list-child
+      list-style square
+      margin-left 2em
+
+.category_list_page .category-icon,.tag_list_page .tag-icon
+  padding 15px
+  background color-theme
+  color color-white
+  &:before
+    color #ffff00
+
+.tag_list_page
+  width 100%
+  .color_btn
+    padding 0;
+    color color-white
+    float right
+    font-size 13px
+    &:hover
+      color #ffff00
+  .tag-list
+    padding 15px 10px
+    &:after
+      content " "
+      display block
+      clear both
+    li
+      float left
+      width 101px
+      height 100px
+      color color-white
+      text-align center
+      line-height 100px
+      background color-blue
+      margin 7px
+      transition 0.3s ease-out
+      transform scale(0,0)
+      &.rendered
+        transform scale(1,1)
+      a
+        color color-white
+      .tag-list-count
+        float right
+        display block
+        width 20px
+        height 20px
+        border-radius 10px
+        background #EAD274
+        line-height 19px
+        margin -6px
+        border 1px color-white solid
+      a:hover
+        text-decoration underline

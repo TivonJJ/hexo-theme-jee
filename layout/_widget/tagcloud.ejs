@@ -1,8 +1,24 @@
 <% if (site.tags.length){ %>
   <div class="tagcloudlist">
-    <a href="<%=config.root%>tags" title="查看所有标签"><p class="asidetitle"><%= __('tagcloud') %></p></a>
+    <p class="asidetitle"><a href="<%=config.root%>tags" title="查看所有标签"><%= __('tagcloud') %></a></p>
     <div class="tagcloudlist clearfix">
        <%- tagcloud() %>
     </div>
   </div>
+<script type="text/javascript">
+  (function(){
+    var getRandomColor = function(){
+      return  '#' +
+              (function(color){
+                return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])
+                && (color.length == 6) ?  color : arguments.callee(color);
+              })('');
+    }
+    if(document.addEventListener)document.addEventListener("DOMContentLoaded",function(){
+      $(".tagcloudlist .tagcloudlist a").each(function(i,item){
+        item.style.color = getRandomColor();
+      });
+    });
+  })();
+</script>
 <% } %>
