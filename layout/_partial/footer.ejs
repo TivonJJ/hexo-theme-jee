@@ -61,7 +61,8 @@
 		<a href="<%= config.url %>" target="_blank" title="<%= config.author %>"><%= config.author %></a>
 		<% } else {%>
 		<a href="<%= config.url %>" title="<%= config.title %>"><%= config.title %></a>
-		<% } %> , All Rights Reserved
-		<span class="powered">Powered by hexo</span>
+		<% } %> , All Rights Reserved.
+		<%if(config.beian){%><span class="beian"> <%=config.beian%> </span><%}%>
+		<span class="powered">Powered by <a href="http://hexo.io">hexo</a></span>
 	</p>
 </div>

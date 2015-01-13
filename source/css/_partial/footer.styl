@@ -20,10 +20,10 @@ footer
   height footer-height
   #footer-link,#friend_link
     font-size 12px
-    width 13em
+    width 100%
     margin 0 auto
-    @media tablet
-      width 18em
+    @media phone
+      width 19em
     &:after
       display block
       content " "
@@ -51,6 +51,9 @@ footer
     font-family font-custom-family
     cursor default
     transition .5s
+    display none
+    @media tablet
+      display block
     &:hover
       transform rotate(-10deg) scale(1.2,1.2)
     @media tablet

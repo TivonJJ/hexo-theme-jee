@@ -53,8 +53,7 @@
       var ai = $('.article-content>iframe'),
               ae = $('.article-content>embed'),
               t  = $('#toc'),
-              h  = $('article h2')
-      ah = $('article h2'),
+              items = t.find(".toc .toc-item"),
               ta = $('#toc.toc-aside'),
               o  = $('.openaside'),
               c  = $('.closeaside');
@@ -64,7 +63,7 @@
       if(ae.length>0){
         ae.wrap('<div class="video-container" />');
       };
-      if(ah.length==0){
+      if(items.length==0){
         t.css('display','none');
       }else{
         c.click(function(){
